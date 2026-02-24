@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatPin | Universal AI Conversation Workspace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #050505; --accent: #00f2ff; --accent-p: #7000ff; --text: #fff; --dim: #b0b0b0; --glass: rgba(255,255,255,0.05); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+        header { padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); sticky; top:0; background: rgba(5,5,5,0.8); backdrop-filter: blur(10px); z-index: 100; }
+        .logo { font-family: 'Orbitron'; color: var(--accent); font-size: 24px; font-weight:700; text-decoration:none; }
+        nav a { color: var(--dim); text-decoration:none; margin-left: 20px; font-size: 12px; text-transform: uppercase; font-weight:600; }
+        nav a:hover { color: var(--accent); }
+        .hero { padding: 150px 5% 100px; text-align: center; }
+        .hero h1 { font-family: 'Orbitron'; font-size: 56px; margin-bottom: 20px; background: linear-gradient(90deg, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--dim); font-size: 20px; max-width: 800px; margin: 0 auto 40px; }
+        .btn { background: linear-gradient(45deg, var(--accent), var(--accent-p)); color: #fff; padding: 18px 40px; border:none; border-radius: 5px; font-family: 'Orbitron'; font-weight:700; cursor:pointer; text-decoration:none; display: inline-block; box-shadow: 0 0 20px rgba(0,242,255,0.3); }
+        
+        section { padding: 100px 5%; max-width: 1100px; margin: 0 auto; }
+        .section-title { font-family: 'Orbitron'; text-align: center; margin-bottom: 50px; color: var(--accent); }
+        .synergy-box { background: var(--glass); border: 1px solid var(--accent-p); padding: 50px; border-radius: 20px; position: relative; text-align: center; }
+        .synergy-num { font-family: 'Orbitron'; font-size: 80px; opacity: 0.1; position: absolute; top:10px; left:20px; }
+        .nav-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 10px 20px; cursor: pointer; font-family: 'Orbitron'; margin: 0 10px; }
+        footer { padding: 50px 5%; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 12px; color: #444; }
+        footer a { color: var(--dim); text-decoration:none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">CHATPIN</a>
+        <nav>
+            <a href="/pricing">Pricing</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="https://buymeacoffee.com/djawjdaks8g" target="_blank">Support</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Pin the Infinite Intelligence.</h1>
+        <p>A high-performance workspace to track, index, and retrieve your AI conversation history globally.</p>
+        <a href="/pricing" class="btn">START ARCHIVING NOW</a>
+    </section>
+
+    <section id="synergy">
+        <h2 class="section-title">Synergy Guide</h2>
+        <div class="synergy-box">
+            <div class="synergy-num" id="syn-num">01</div>
+            <div id="syn-content">
+                <h3 id="syn-title" style="margin-bottom:20px; font-size:24px;">Cross-Model Context Synthesis</h3>
+                <p id="syn-desc" style="color:var(--dim);">Pin logic from GPT-4 and creative drafts from Claude into a single timeline. Combine the strengths of multiple AI models.</p>
+            </div>
+            <div style="margin-top:40px;">
+                <button class="nav-btn" onclick="changeSynergy(-1)">PREV</button>
+                <span id="page-indicator" style="color:var(--accent); font-family:'Orbitron';">1 / 20</span>
+                <button class="nav-btn" onclick="changeSynergy(1)">NEXT</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 CHATPIN. Support: offthemain@proton.me</p>
+        <div style="margin-top:15px;">
+            <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a> | <a href="/pricing">Pricing</a>
+        </div>
+    </footer>
+
+    <script>
+        const synergyData = [
+            { title: "Cross-Model Context Synthesis", desc: "Pin logic from GPT-4 and creative drafts from Claude into a single timeline." },
+            { title: "Prompt Engineering Lab", desc: "Track every prompt iteration to refine your engineering skills over time." },
+            { title: "Long-Context Warp", desc: "Instantly jump to specific code logic in massive AI conversations." },
+            { title: "Personal Knowledge Base", desc: "Export tagged AI insights to your personal knowledge management system." },
+            { title: "WriteSonic Content Synergy", desc: "Pair ChatPin with WriteSonic for a high-speed SEO content workflow." },
+            { title: "Dynamic Language Learning", desc: "Archive grammar explanations and cultural nuances from AI tutors." },
+            { title: "Bug-to-Solution History", desc: "Build a searchable troubleshooting database from your past debugging chats." },
+            { title: "Idea Evolution Tracker", desc: "Document how a simple concept evolves into a full business plan." },
+            { title: "Real-time Market Insights", desc: "Save live trend analysis from Gemini or Perplexity as strategic references." },
+            { title: "Enterprise Custom AI", desc: "Register internal company AI tools as sources in one secure interface." },
+            { title: "Automated Meeting Minutes", desc: "Keep a searchable history of AI-generated project milestones." },
+            { title: "Travel & Itinerary Planning", desc: "Merge travel data from different AIs into one cohesive archive." },
+            { title: "Legal Analysis History", desc: "Preserve detailed breakdowns of complex contracts over time." },
+            { title: "Creative Writing Continuity", desc: "Pin character sheets and world-building rules for long-form projects." },
+            { title: "Financial Data Snapshotting", desc: "Archive AI-driven financial projections and track market changes." },
+            { title: "Academic Research Master", desc: "Group AI-powered paper summaries by project hashtags." },
+            { title: "Customer Support Templates", desc: "Build a library of the best AI-generated support responses." },
+            { title: "Visual Prompt Design", desc: "Log DALL-E or Midjourney prompts alongside their descriptions." },
+            { title: "Personal Growth Journal", desc: "Keep a record of philosophical or coaching sessions for reflection." },
+            { title: "Multi-Device Continuity", desc: "Seamlessly access office pins on your home laptop via cloud sync." }
+        ];
+        let currentIdx = 0;
+        function changeSynergy(dir) {
+            currentIdx = (currentIdx + dir + 20) % 20;
+            document.getElementById('syn-num').innerText = (currentIdx + 1).toString().padStart(2, '0');
+            document.getElementById('syn-title').innerText = synergyData[currentIdx].title;
+            document.getElementById('syn-desc').innerText = synergyData[currentIdx].desc;
+            document.getElementById('page-indicator').innerText = `${currentIdx + 1} / 20`;
+        }
+    </script>
+</body>
+</html>
