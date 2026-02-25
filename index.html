@@ -3,89 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatPin | The Universal Flight Recorder for AI Intelligence</title>
+    <title>ChatPin | Universal AI Flight Recorder & Knowledge Archive</title>
+    <!-- Gumroad Overlay Script -->
+    <script src="https://gumroad.com/js/gumroad.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #020202;
+            --bg: #030303;
             --card-bg: rgba(255, 255, 255, 0.02);
-            --accent: #00f2ff; /* Cyber Blue */
-            --accent-p: #7000ff; /* Neon Purple */
-            --text-main: #ffffff;
-            --text-dim: #9ca3af;
+            --acc: #00f2ff; /* Cyber Blue */
+            --purp: #7000ff; /* Neon Purple */
+            --text: #ffffff;
+            --dim: #9ca3af;
             --border: rgba(255, 255, 255, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: var(--bg); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.6; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
         
-        /* Background Animation */
         .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(112, 0, 255, 0.05), transparent); z-index: -1; }
 
-        header { padding: 25px 8%; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-family: 'Orbitron', sans-serif; font-size: 26px; font-weight: 700; color: var(--accent); letter-spacing: 2px; text-decoration: none; }
-        nav a { margin-left: 30px; font-size: 13px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: 0.3s; }
-        nav a:hover { color: var(--accent); text-shadow: 0 0 8px var(--accent); }
+        header { padding: 25px 8%; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; background: rgba(3,3,3,0.8); }
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 26px; font-weight: 700; color: var(--acc); letter-spacing: 2px; text-decoration: none; }
+        nav a { margin-left: 25px; font-size: 12px; font-weight: 600; color: var(--dim); text-transform: uppercase; text-decoration: none; transition: 0.3s; }
+        nav a:hover { color: var(--acc); }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
 
         /* Hero Section */
-        .hero { padding: 180px 0 120px; text-align: center; }
-        .hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(40px, 8vw, 72px); font-weight: 800; line-height: 1.1; margin-bottom: 30px; background: linear-gradient(to right, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: clamp(16px, 4vw, 22px); color: var(--text-dim); max-width: 800px; margin: 0 auto 50px; font-weight: 300; }
-        .btn-glow { background: linear-gradient(45deg, var(--accent), var(--accent-p)); color: #fff; padding: 22px 55px; border-radius: 4px; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 16px; border: none; cursor: pointer; transition: 0.4s; box-shadow: 0 0 25px rgba(0, 242, 255, 0.2); text-decoration: none; display: inline-block; }
+        .hero { padding: 180px 0 100px; text-align: center; }
+        .hero h1 { font-family: 'Orbitron'; font-size: clamp(32px, 7vw, 68px); font-weight: 800; line-height: 1.1; margin-bottom: 30px; background: linear-gradient(to right, #fff, var(--acc)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: var(--dim); max-width: 850px; margin: 0 auto 50px; font-weight: 300; }
+        
+        .btn-glow { background: linear-gradient(45deg, var(--acc), var(--purp)); color: #fff; padding: 22px 55px; border-radius: 5px; font-family: 'Orbitron'; font-weight: 700; font-size: 16px; border: none; cursor: pointer; transition: 0.4s; box-shadow: 0 0 25px rgba(0, 242, 255, 0.2); text-decoration: none; display: inline-block; }
         .btn-glow:hover { transform: translateY(-3px); box-shadow: 0 0 45px rgba(0, 242, 255, 0.5); }
 
-        /* Multi-Slot Highlight */
-        .slot-info { margin-top: 40px; font-size: 14px; color: var(--accent); opacity: 0.8; font-family: 'Orbitron'; }
+        .bmac-neon { 
+            display: inline-block; padding: 16px 40px; border: 2px solid var(--acc); color: var(--acc); 
+            font-family: 'Orbitron'; font-weight: 700; border-radius: 50px; text-decoration: none;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.1); transition: 0.4s; margin-top: 20px;
+        }
+        .bmac-neon:hover { background: var(--acc); color: #000; box-shadow: 0 0 30px var(--acc); }
 
-        /* Detailed Features Grid */
+        /* Sections */
         section { padding: 120px 0; border-bottom: 1px solid var(--border); }
-        .section-label { font-family: 'Orbitron'; color: var(--accent-p); font-size: 14px; letter-spacing: 3px; display: block; text-align: center; margin-bottom: 20px; }
-        .section-title { font-family: 'Orbitron'; text-align: center; margin-bottom: 70px; font-size: clamp(28px, 5vw, 42px); font-weight: 700; }
+        .section-label { font-family: 'Orbitron'; color: var(--purp); font-size: 14px; letter-spacing: 3px; display: block; text-align: center; margin-bottom: 20px; }
+        .section-title { font-family: 'Orbitron'; text-align: center; margin-bottom: 70px; font-size: 32px; font-weight: 700; }
         
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .card { background: var(--card-bg); border: 1px solid var(--border); padding: 45px; border-radius: 24px; transition: 0.5s; }
-        .card:hover { border-color: var(--accent); background: rgba(255, 255, 255, 0.05); transform: translateY(-10px); }
-        .card .icon { font-size: 32px; margin-bottom: 25px; }
-        .card h3 { font-family: 'Orbitron'; font-size: 18px; color: var(--accent); margin-bottom: 15px; }
-        .card p { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
+        .card h3 { font-family: 'Orbitron'; font-size: 18px; color: var(--acc); margin-bottom: 15px; }
 
-        /* How it Works / Workflow */
-        .workflow { display: flex; justify-content: space-between; gap: 40px; margin-top: 50px; }
-        .step { flex: 1; text-align: center; padding: 30px; }
-        .step-num { font-family: 'Orbitron'; font-size: 48px; color: var(--glass-border); opacity: 0.2; margin-bottom: 10px; }
-        .step h4 { margin-bottom: 15px; font-family: 'Orbitron'; font-size: 16px; }
+        /* Synergy Slider */
+        .synergy-container { position: relative; background: rgba(112, 0, 255, 0.03); border: 1px solid var(--purp); padding: 80px 60px; border-radius: 40px; text-align: center; }
+        .synergy-num { font-family: 'Orbitron'; font-size: 120px; opacity: 0.03; position: absolute; top: 10px; left: 30px; }
+        .nav-btn { background: none; border: 1px solid var(--acc); color: var(--acc); padding: 12px 30px; cursor: pointer; font-family: 'Orbitron'; margin: 0 10px; transition: 0.3s; }
+        .nav-btn:hover { background: var(--acc); color: #000; }
 
-        /* Synergy Guide Slider - Rich Content */
-        .synergy-container { position: relative; background: linear-gradient(135deg, rgba(112, 0, 255, 0.05) 0%, rgba(0, 242, 255, 0.05) 100%); border: 1px solid var(--accent-p); border-radius: 40px; padding: 80px 60px; overflow: hidden; }
-        .synergy-num { font-family: 'Orbitron'; font-size: 140px; opacity: 0.04; position: absolute; top: -10px; left: 30px; }
-        .synergy-content { min-height: 300px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 10; }
-        .synergy-title { font-size: 32px; font-weight: 800; margin-bottom: 25px; color: #fff; }
-        .synergy-desc { font-size: 18px; color: var(--text-dim); line-height: 1.8; max-width: 900px; }
-        .synergy-nav { display: flex; justify-content: center; align-items: center; margin-top: 60px; gap: 40px; }
-        .nav-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 15px 35px; cursor: pointer; font-family: 'Orbitron'; font-size: 12px; transition: 0.3s; }
-        .nav-btn:hover:not(:disabled) { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent); }
-        .nav-btn:disabled { opacity: 0.2; cursor: default; }
+        /* Ecosystem & Affiliate */
+        .eco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .eco-card { padding: 40px; border: 1px solid var(--border); border-radius: 20px; background: rgba(255,255,255,0.01); text-align: center; transition: 0.3s; }
+        .eco-card:hover { border-color: var(--acc); background: rgba(0,242,255,0.02); }
 
-        /* FAQ Section */
-        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .faq-item h4 { font-size: 18px; margin-bottom: 10px; color: #fff; }
-        .faq-item p { font-size: 14px; color: var(--text-dim); }
+        /* Legal */
+        .legal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; font-size: 14px; color: var(--dim); }
 
-        /* Footer & Contact */
         footer { padding: 100px 5% 60px; text-align: center; border-top: 1px solid var(--border); }
-        .proton-mail { font-family: 'Orbitron'; color: var(--accent); font-size: 14px; margin-bottom: 30px; letter-spacing: 1px; }
-        .footer-links a { color: var(--text-dim); text-decoration: none; margin: 0 20px; font-size: 13px; transition: 0.3s; }
-        .footer-links a:hover { color: #fff; }
-
-        @media (max-width: 768px) {
-            .hero { padding: 120px 0 80px; }
-            .feature-grid, .workflow, .faq-grid { grid-template-columns: 1fr; }
-            .synergy-container { padding: 50px 25px; }
-            .synergy-title { font-size: 24px; }
-            .synergy-desc { font-size: 15px; }
-        }
+        .proton-mail { font-family: 'Orbitron'; color: var(--acc); font-size: 14px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
@@ -94,176 +78,129 @@
         <a href="/" class="logo">CHATPIN</a>
         <nav>
             <a href="#features">Features</a>
-            <a href="#how-it-works">Workflow</a>
             <a href="#synergy">Synergy Guide</a>
-            <a href="/pricing">Pricing</a>
-            <a href="https://buymeacoffee.com/djawjdaks8g" target="_blank">Support</a>
+            <a href="#ecosystem">Projects</a>
+            <a href="https://halftotake.gumroad.com/l/jgfqiw">Pricing</a>
         </nav>
     </header>
 
     <div class="container">
         <!-- Hero Section -->
         <section class="hero">
-            <h1>The Universal Flight Recorder<br>for Any AI Intelligence.</h1>
-            <p>Track, timestamp, and retrieve every thought you've shared with AI. From linear chats to structured documents, your intelligence is now permanent and searchable.</p>
-            <a href="/pricing" class="btn-glow">START ARCHIVING FOR FREE</a>
-            <div class="slot-info">ACTIVE SLOTS: ANY 5 AI PLATFORMS (CHATGPT, NOTION, GEMINI, ETC.)</div>
-            <div style="margin-top: 30px;">
-                <a href="https://buymeacoffee.com/djawjdaks8g" target="_blank" style="color: var(--text-dim); font-size: 14px; text-decoration: none;">
-                    ☕ Small Support, Infinite Growth.
-                </a>
-            </div>
+            <h1>Pin the Infinite<br>Intelligence.</h1>
+            <p>The universal flight recorder for AI conversations (ChatGPT, Notion, Gemini, etc.). Track thoughts, timestamp insights, and warp back to context instantly.</p>
+            <a href="https://halftotake.gumroad.com/l/jgfqiw" class="btn-glow">GET PRO ACCESS</a><br>
+            <a href="https://buymeacoffee.com/djawjdaks8g" target="_blank" class="bmac-neon">☕ SUPPORT WITH COFFEE</a>
         </section>
 
-        <!-- Features Section -->
+        <!-- Features (Rich Text for AdSense) -->
         <section id="features">
             <span class="section-label">CAPABILITIES</span>
             <h2 class="section-title">Beyond Simple Bookmarks</h2>
             <div class="feature-grid">
                 <div class="card">
-                    <div class="icon">🔍</div>
-                    <h3>Unified History Tracking</h3>
+                    <h3>Unified Tracking</h3>
                     <p>What did you ask, when, and where? ChatPin logs every Q&A pair in real-time across any 5 selected platforms **(ChatGPT, Notion, Gemini, etc.)**. No more digging through infinite history tabs.</p>
                 </div>
                 <div class="card">
-                    <div class="icon">⚡</div>
                     <h3>Context Warp Jump</h3>
                     <p>Jump directly back to the exact scroll position of any past interaction. Whether it's a 100-page document or a year-old thread **(Notion, Claude, Perplexity, etc.)**, you are one click away from the context.</p>
                 </div>
                 <div class="card">
-                    <div class="icon">🕒</div>
-                    <h3>Smart Timestamping</h3>
-                    <p>A flight recorder for your brainstorming. Every interaction is logged with a precise timestamp, allowing you to reconstruct your thought process and see exactly how your ideas evolved.</p>
-                </div>
-                <div class="card">
-                    <div class="icon">🔖</div>
-                    <h3>Smart Pin & Highlight</h3>
-                    <p>Found a golden response? Pin it. ChatPin marks the conversation as "Important" and creates a visual anchor in your sidebar for instant retrieval across all platforms.</p>
-                </div>
-                <div class="card">
-                    <div class="icon">🌐</div>
-                    <h3>Universal AI Slot System</h3>
-                    <p>Freedom to choose. Assign your 5 free slots to any AI-powered web domain. If it has a chat box, ChatPin can track it **(Custom AI, Internal Portals, etc.)**.</p>
-                </div>
-                <div class="card">
-                    <h3>💎 Pro: Unlimited Evolution</h3>
-                    <p>For AI power users. Remove the 5-slot limit and register infinite custom domains. Sync everything to your Google Drive for real-time continuity across all your devices.</p>
+                    <h3>Zero-Server Privacy</h3>
+                    <p>Your data stays yours. We use local IndexedDB and your personal Google Drive for total data sovereignty. No central servers ever see your private AI conversations.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Workflow Section -->
-        <section id="how-it-works">
-            <span class="section-label">WORKFLOW</span>
-            <h2 class="section-title">Seamless Intelligence Archiving</h2>
-            <div class="workflow">
-                <div class="step">
-                    <div class="step-num">01</div>
-                    <h4>Select Your Slot</h4>
-                    <p style="font-size: 13px; color: var(--text-dim);">Register any 5 AI web domains as your primary tracking slots **(Notion, ChatGPT, etc.)**.</p>
-                </div>
-                <div class="step">
-                    <div class="step-num">02</div>
-                    <h4>Interact Naturally</h4>
-                    <p style="font-size: 13px; color: var(--text-dim);">ChatPin silently records every question and answer in the background with millisecond precision.</p>
-                </div>
-                <div class="step">
-                    <div class="step-num">03</div>
-                    <h4>Retrieve & Warp</h4>
-                    <p style="font-size: 13px; color: var(--text-dim);">Search your global history and click any event to "warp" back to the exact location in the original AI interface.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Synergy Guide Slider - The Deep Content -->
+        <!-- Synergy Guide Slider (20 Items) -->
         <section id="synergy">
             <span class="section-label">MASTER GUIDE</span>
             <h2 class="section-title">20 Ways to Master ChatPin</h2>
             <div class="synergy-container">
                 <div class="synergy-num" id="syn-num">01</div>
-                <div class="synergy-content">
-                    <h3 class="synergy-title" id="syn-title">Cross-Model Context Synthesis</h3>
-                    <p class="synergy-desc" id="syn-desc">Seamlessly weave together high-level logic from GPT-4, creative drafts from Claude 3.5, and real-time data from Perplexity. By pinning diverse outputs into a single unified timeline, you can synthesize complex solutions that no single AI model could achieve alone. Build the ultimate hybrid intelligence dashboard.</p>
+                <div id="syn-content" style="min-height: 250px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                    <h3 id="syn-title" style="font-size: 28px; margin-bottom: 20px;">Cross-Model Context Synthesis</h3>
+                    <p id="syn-desc" style="color: var(--dim); font-size: 18px; line-height: 1.8; max-width: 850px;">Seamlessly weave together logic from GPT-4, creative drafts from Claude 3.5, and real-time data from Perplexity into a single unified timeline. Build a hybrid intelligence base.</p>
                 </div>
-                <div class="synergy-nav">
-                    <button class="nav-btn" id="prev-btn" onclick="changeSynergy(-1)" disabled>PREVIOUS</button>
-                    <div id="page-indicator" style="font-family: 'Orbitron'; font-size: 16px; color: var(--accent);">1 / 20</div>
-                    <button class="nav-btn" id="next-btn" onclick="changeSynergy(1)">NEXT</button>
+                <div style="margin-top: 50px; display:flex; justify-content:center; align-items:center; gap:30px;">
+                    <button class="nav-btn" onclick="move(-1)">PREV</button>
+                    <span id="page-num" style="font-family:'Orbitron'; color:var(--acc);">1 / 20</span>
+                    <button class="nav-btn" onclick="move(1)">NEXT</button>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section id="faq">
-            <span class="section-label">FAQ</span>
-            <h2 class="section-title">Common Questions</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h4>Is Notion AI really supported?</h4>
-                    <p>Absolutely. ChatPin is designed to understand both linear chat flows and document-based AI blocks. You can warp back to specific blocks within a long Notion document just as easily as a chat thread.</p>
+        <!-- Ecosystem & Affiliate -->
+        <section id="ecosystem" class="ecosystem">
+            <h2 class="section-title">The Dedle Ecosystem</h2>
+            <div class="eco-grid">
+                <div class="eco-card">
+                    <h3 style="color:var(--acc); font-family:'Orbitron'; margin-bottom:15px;">🌐 WriteSonic</h3>
+                    <p style="font-size:14px; margin-bottom:20px; color:var(--dim);">The world's best AI for SEO content. Generate drafts and track them instantly with ChatPin. (Partner Perks)</p>
+                    <a href="#" style="color:#fff; text-decoration:underline;">Claim Discount ↗</a>
                 </div>
-                <div class="faq-item">
-                    <h4>Can I change my 5 free slots?</h4>
-                    <p>Yes. You can manage and swap your 5 active slots at any time to adapt to your changing AI toolset **(ChatGPT, Claude, Custom Portals, etc.)**.</p>
+                <div class="eco-card">
+                    <h3 style="color:var(--acc); font-family:'Orbitron'; margin-bottom:15px;">🖱️ Pro Gear</h3>
+                    <p style="font-size:14px; margin-bottom:20px; color:var(--dim);">Logitech MX Master 3S. Map ChatPin shortcuts to side buttons for the ultimate AI workflow. (Affiliate)</p>
+                    <a href="https://www.amazon.com/s?k=logitech+mx+master+3s&tag=dedle" target="_blank" style="color:#fff; text-decoration:underline;">View on Amazon ↗</a>
                 </div>
-                <div class="faq-item">
-                    <h4>Where is my data stored?</h4>
-                    <p>Privacy is our core philosophy. Your data is stored locally in your browser's IndexedDB. We have no central servers and never see your conversation history.</p>
+                <div class="eco-card">
+                    <h3 style="color:var(--acc); font-family:'Orbitron'; margin-bottom:15px;">🚀 Our Projects</h3>
+                    <p style="font-size:14px; margin-bottom:20px; color:var(--dim);">Discover the full portfolio of Dedle productivity tools and micro-SaaS experiments via our Linktree.</p>
+                    <a href="https://linktr.ee/dedle" target="_blank" style="color:#fff; text-decoration:underline;">Visit Linktree ↗</a>
                 </div>
-                <div class="faq-item">
-                    <h4>What is the "Warp" feature?</h4>
-                    <p>It's our proprietary navigation logic. We store the unique DOM coordinates of your questions so you can jump back to the exact spot in an infinite chat or document instantly.</p>
-                </div>
+            </div>
+        </section>
+
+        <!-- Legal Content -->
+        <section id="legal" class="legal-grid">
+            <div>
+                <h2 style="font-family:'Orbitron'; font-size:20px; margin-bottom:20px;">Privacy Policy</h2>
+                <p>ChatPin is a privacy-first extension. We do not store your data on our servers. All logs are stored locally in your browser. Pro sync uses your personal Google Drive account.</p>
+            </div>
+            <div>
+                <h2 style="font-family:'Orbitron'; font-size:20px; margin-bottom:20px;">Terms of Service</h2>
+                <p>ChatPin is a management tool. We are not liable for platform-side changes on services like ChatGPT or Notion. Use must comply with AI provider terms.</p>
             </div>
         </section>
     </div>
 
     <footer>
         <div class="proton-mail">CONTACT: offthemain@proton.me</div>
-        <div class="footer-links">
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms of Service</a>
-            <a href="/pricing">Pricing</a>
-            <a href="https://buymeacoffee.com/djawjdaks8g" target="_blank">Donate</a>
-        </div>
-        <div style="margin-top: 50px; opacity: 0.3; font-size: 10px; letter-spacing: 2px;">
-            © 2024 CHATPIN. DESIGNED FOR THE NEW ERA OF INTELLIGENCE.
-        </div>
+        <p style="opacity:0.3; font-size:11px;">© 2024 CHATPIN. DESIGNED BY DEDLE. ACCESS THE FUTURE.</p>
     </footer>
 
     <script>
         const synergyData = [
-            { title: "Cross-Model Context Synthesis", desc: "Seamlessly weave together logic from GPT-4, creative drafts from Claude 3.5, and real-time data from Perplexity. By pinning diverse outputs into a single unified timeline, you can synthesize complex solutions that no single AI model could achieve alone. Perfect for deep research and multi-layered project planning." },
-            { title: "Iterative Prompt Versioning Lab", desc: "Every prompt you send is a variable in an experiment. Archive every iteration with its exact timestamp to track which specific phrasing triggered the optimal AI response. Build a 'Prompt Version History' that functions as a professional laboratory for mastering prompt engineering across all platforms." },
-            { title: "Notion AI Continuity Protocol", desc: "Notion AI is powerful but fragmented. Use ChatPin to track the 'Drafting Lineage' of your Notion pages. By archiving the AI chat sidebar and inline interactions, you preserve the underlying logic that led to the final document, creating a permanent audit trail for your structured work." },
-            { title: "Long-Context Warp Navigation", desc: "As AI context windows grow to millions of tokens, finding a specific point in a massive thread is impossible. ChatPin’s 'Warp' system maps the coordinates of your interaction. One click on a past pin instantly teleports your browser to that exact scroll position, saving hours of manual searching." },
-            { title: "SaaS Synergy: WriteSonic & ChatPin", desc: "Combine WriteSonic’s SEO-optimized generation with ChatPin’s archival stability. Generate high-volume content, pin the successful drafts, and then move to ChatGPT for creative refinement. ChatPin acts as the bridge that prevents data loss across specialized AI writing tools." },
-            { title: "Debugging Lineage Archive", desc: "For developers, a solution is often the 20th attempt in a long debugging session. ChatPin archives every failed attempt and the final successful fix. Next time you encounter a similar bug, search your history to find the exact lineage of the solution, complete with the AI's explanation." },
-            { title: "Real-time Insight Decay Prevention", desc: "Real-time AI data from services like Perplexity or Gemini can change within hours. Use ChatPin to take 'Logical Snapshots' of market insights. By pinning the answer at that specific moment, you prevent the decay of critical information and can reference it as a fixed point in your history." },
-            { title: "Dynamic Language Learning Ledger", desc: "Transform AI tutors into a personalized, searchable textbook. Archive grammar corrections, cultural nuances, and vocabulary explanations. Build a custom ledger that grows with your fluency, far more effective than static apps or disparate chat logs." },
-            { title: "Multi-Source Intellectual Auditing", desc: "When researching high-stakes topics, verify AI claims by asking multiple models. Pin the conflicting or supporting answers from different sources (Notion, Claude, Gemini, etc.). This creates an 'Intellectual Audit' trail, allowing you to visually compare data points for a more objective conclusion." },
-            { title: "Idea Evolution Mapping", desc: "Trace the genealogy of a complex idea. From a simple two-sentence brainstorm to a massive business proposal, ChatPin documents every step of the evolution. This historical record is invaluable for understanding how your concepts mature over time through AI dialogue." },
-            { title: "Corporate AI Portal Compatibility", desc: "For professionals using proprietary in-house AI portals, Pro users can register their company’s internal AI domain as a custom source. Manage your sensitive professional archive alongside your personal AI tools in one unified, secure, and local interface." },
-            { title: "Academic Research Bibliography", desc: "AI is an incredible research assistant, but it’s easy to forget where a specific summary came from. Tag your academic AI pins with specific project hashtags to build a dynamic bibliography that preserves the context of every paper summary and data extraction." },
-            { title: "Legal & Compliance Audit Trail", desc: "Maintain a precise record of AI-assisted document reviews or contract analyses. In a compliance-heavy environment, being able to show exactly what was asked and what was responded at a specific time is a critical safety net for professionals using Notion or ChatGPT." },
-            { title: "Creative Continuity Engine", desc: "Long-form creators can pin character sheets, world-building rules, and plot points across different AI sessions. Having a persistent sidebar with these rules ensures the AI remains consistent with your vision, no matter how many separate sessions you start." },
-            { title: "Financial Forecast Snapshotting", desc: "Archive AI-driven financial projections and risk assessments. By pinning these results on a regular basis, you can track how AI’s 'opinion' of the market shifts in response to changing data, providing unique insights into AI-driven trend forecasting." },
-            { title: "Prompt-to-Visual Design Registry", desc: "Designers using DALL-E or Midjourney via web interfaces can log text-to-image prompts alongside the AI's descriptive feedback. This creates a visual-linguistic registry that helps you replicate specific artistic styles and lighting effects in future projects." },
-            { title: "Philosophy & Coaching Log", desc: "Use AI as a mirror for self-reflection. Archive philosophical discussions or coaching sessions to track your personal growth and mental shifts over years. Your archive becomes a digital journal of your developing mindset and cognitive evolution." },
-            { title: "Customer Support Logic Library", desc: "Build a library of the most effective AI-generated customer responses. By pinning high-quality explanations for complex problems, you create a master logic library that can be reused to train human staff or refine future AI-driven agents." },
-            { title: "Rapid Platform Update Resilience", desc: "AI platforms change their layouts constantly. ChatPin’s dynamic engine is built to adapt. Even when ChatGPT or Notion updates their UI, our Pro engine allows for manual selector adjustment, ensuring your archive workflow is never interrupted." },
-            { title: "Multi-Device Professional Freedom", desc: "Experience total continuity. Pin a research thread on your office workstation and instantly find it on your personal laptop via Google Drive sync. Truly borderless intelligence that follows you across every AI tool and every device." }
+            { title: "Cross-Model Context Synthesis", desc: "Combine high-level logic from GPT-4 and creative drafts from Claude into a single workspace. Archive prompts and answers to synthesize a superior intelligence base." },
+            { title: "Notion AI Continuity Protocol", desc: "Track every AI drafting block within Notion documents. Warp back to the exact location of any AI-generated content in your long-form Notion pages." },
+            { title: "Prompt Engineering Laboratory", desc: "Every prompt is an experiment. Archive every iteration with millisecond timestamps to build a professional library of your successful prompt lineage." },
+            { title: "Long-Context Warp Navigation", desc: "Jump back to specific points in million-token conversations instantly. No more manual scrolling in ChatGPT or Perplexity threads." },
+            { title: "SaaS Synergy: WriteSonic", desc: "Generate SEO-optimized content on WriteSonic and refine it in ChatGPT while keeping all your research logs in ChatPin's universal timeline." },
+            { title: "Debugging Lineage Archive", desc: "For developers, a fix is often the 10th attempt. Archive failed attempts and the final solution to build a searchable troubleshooting database." },
+            { title: "Real-time Insight Snapshots", desc: "AI data from Gemini or Perplexity decays fast. Pin real-time market insights as fixed-point references in your personal knowledge archive." },
+            { title: "Language Learning Ledger", desc: "Turn AI tutors into a searchable textbook. Archive grammar explanations and cultural nuances, building a ledger that grows with your fluency." },
+            { title: "Multi-Source Intellectual Auditing", desc: "Verify claims by asking multiple AI models. Pin conflicting or supporting answers to create a visual 'Intellectual Audit' trail for critical research." },
+            { title: "Idea Evolution Mapping", desc: "Trace the genealogy of an idea from a two-sentence brainstorm to a full business plan. Document every step of the cognitive evolution." },
+            { title: "Corporate AI Portal Tracking", desc: "Use Pro slots to register proprietary in-house AI portals. Manage sensitive professional archives alongside personal AI tools securely." },
+            { title: "Academic Bibliography Context", desc: "AI is a research assistant, but where did that summary come from? Tag pins with project hashtags to build a dynamic, contextual bibliography." },
+            { title: "Legal & Compliance Audit", desc: "Maintain a precise record of AI-assisted document reviews. Show exactly what was asked and responded at any specific time for compliance." },
+            { title: "Creative Continuity Engine", desc: "Pin character sheets and world-building rules. Ensure your AI sessions stay consistent with your creative vision, no matter the session length." },
+            { title: "Financial Forecast Archiving", desc: "Archive AI-driven financial assessments. Track how AI's opinion of the market shifts quarterly as new data becomes available." },
+            { title: "Prompt-to-Visual Design Registry", desc: "Log text-to-image prompts alongside descriptive AI feedback. Replicate artistic styles and lighting effects across future DALL-E sessions." },
+            { title: "Philosophy & Coaching Log", desc: "Use AI for self-reflection. Archive philosophical discussions or coaching sessions to track your mental shifts and personal growth over years." },
+            { title: "Customer Support Logic Library", desc: "Build a library of the best AI-generated support responses. Reuse high-quality explanations to train staff or refine future AI agents." },
+            { title: "Rapid Platform Update Resilience", desc: "AI platforms change UI constantly. ChatPin's dynamic engine adapts. Even when UIs shift, Pro users can manually adjust selectors for continuity." },
+            { title: "Multi-Device Professional Freedom", desc: "Experience total continuity. Pin a research thread on your office PC and instantly find it on your home laptop via secure Google Drive sync." }
         ];
-
-        let currentIdx = 0;
-        function changeSynergy(dir) {
-            currentIdx += dir;
-            document.getElementById('syn-num').innerText = (currentIdx + 1).toString().padStart(2, '0');
-            document.getElementById('syn-title').innerText = synergyData[currentIdx].title;
-            document.getElementById('syn-desc').innerText = synergyData[currentIdx].desc;
-            document.getElementById('page-indicator').innerText = `${currentIdx + 1} / 20`;
-            document.getElementById('prev-btn').disabled = currentIdx === 0;
-            document.getElementById('next-btn').disabled = currentIdx === 19;
+        let cur = 0;
+        function move(dir) {
+            cur = (cur + dir + 20) % 20;
+            document.getElementById('syn-num').innerText = (cur + 1).toString().padStart(2, '0');
+            document.getElementById('syn-title').innerText = synergyData[cur].title;
+            document.getElementById('syn-desc').innerText = synergyData[cur].desc;
+            document.getElementById('page-num').innerText = `${cur + 1} / 20`;
         }
     </script>
 </body>
