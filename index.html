@@ -4,72 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChatPin | Universal AI Flight Recorder & Knowledge Archive</title>
-    <!-- Gumroad Overlay Script -->
-    <script src="https://gumroad.com/js/gumroad.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #030303;
-            --card-bg: rgba(255, 255, 255, 0.02);
-            --acc: #00f2ff; /* Cyber Blue */
-            --purp: #7000ff; /* Neon Purple */
-            --text: #ffffff;
-            --dim: #9ca3af;
-            --border: rgba(255, 255, 255, 0.08);
-        }
-
+        :root { --bg: #020202; --acc: #00f2ff; --purp: #7000ff; --text: #fff; --dim: #9ca3af; --border: rgba(255, 255, 255, 0.08); --glass: rgba(255, 255, 255, 0.02); }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
-        
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
         .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(112, 0, 255, 0.05), transparent); z-index: -1; }
+        
+        /* 💡 AdSense Slots - Optimized for Revenue */
+        .ad-slot { width: 100%; max-width: 970px; min-height: 90px; background: rgba(255,255,255,0.01); border: 1px dashed #111; margin: 40px auto; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #333; letter-spacing: 2px; }
 
-        header { padding: 25px 8%; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; background: rgba(3,3,3,0.8); }
-        .logo { font-family: 'Orbitron', sans-serif; font-size: 26px; font-weight: 700; color: var(--acc); letter-spacing: 2px; text-decoration: none; }
+        header { padding: 25px 8%; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; background: rgba(2,2,2,0.8); }
+        .logo { font-family: 'Orbitron'; font-size: 24px; font-weight: 700; color: var(--acc); letter-spacing: 2px; text-decoration: none; }
         nav a { margin-left: 25px; font-size: 12px; font-weight: 600; color: var(--dim); text-transform: uppercase; text-decoration: none; transition: 0.3s; }
-        nav a:hover { color: var(--acc); }
+        nav a:hover { color: var(--acc); text-shadow: 0 0 10px var(--acc); }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
-
+        
         /* Hero Section */
-        .hero { padding: 180px 0 100px; text-align: center; }
-        .hero h1 { font-family: 'Orbitron'; font-size: clamp(32px, 7vw, 68px); font-weight: 800; line-height: 1.1; margin-bottom: 30px; background: linear-gradient(to right, #fff, var(--acc)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 20px; color: var(--dim); max-width: 850px; margin: 0 auto 50px; font-weight: 300; }
+        .hero { padding: 120px 0 60px; text-align: center; }
+        .hero h1 { font-family: 'Orbitron'; font-size: clamp(32px, 7vw, 72px); font-weight: 800; line-height: 1.1; margin-bottom: 30px; background: linear-gradient(to right, #fff, var(--acc)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: var(--dim); max-width: 800px; margin: 0 auto 50px; }
         
-        .btn-glow { background: linear-gradient(45deg, var(--acc), var(--purp)); color: #fff; padding: 22px 55px; border-radius: 5px; font-family: 'Orbitron'; font-weight: 700; font-size: 16px; border: none; cursor: pointer; transition: 0.4s; box-shadow: 0 0 25px rgba(0, 242, 255, 0.2); text-decoration: none; display: inline-block; }
-        .btn-glow:hover { transform: translateY(-3px); box-shadow: 0 0 45px rgba(0, 242, 255, 0.5); }
+        .cta-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .btn-acc { background: var(--acc); color: #000; padding: 18px 40px; border-radius: 5px; font-family: 'Orbitron'; font-weight: 700; text-decoration: none; transition: 0.3s; box-shadow: 0 0 20px rgba(0,242,255,0.3); }
+        .btn-purp { background: none; border: 2px solid var(--purp); color: var(--purp); padding: 18px 40px; border-radius: 5px; font-family: 'Orbitron'; font-weight: 700; text-decoration: none; transition: 0.3s; }
+        .btn-acc:hover { transform: translateY(-3px); box-shadow: 0 0 40px var(--acc); }
+        .btn-purp:hover { background: var(--purp); color: #fff; }
 
-        .bmac-neon { 
-            display: inline-block; padding: 16px 40px; border: 2px solid var(--acc); color: var(--acc); 
-            font-family: 'Orbitron'; font-weight: 700; border-radius: 50px; text-decoration: none;
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.1); transition: 0.4s; margin-top: 20px;
-        }
-        .bmac-neon:hover { background: var(--acc); color: #000; box-shadow: 0 0 30px var(--acc); }
-
-        /* Sections */
-        section { padding: 120px 0; border-bottom: 1px solid var(--border); }
-        .section-label { font-family: 'Orbitron'; color: var(--purp); font-size: 14px; letter-spacing: 3px; display: block; text-align: center; margin-bottom: 20px; }
-        .section-title { font-family: 'Orbitron'; text-align: center; margin-bottom: 70px; font-size: 32px; font-weight: 700; }
-        
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 45px; border-radius: 24px; transition: 0.5s; }
-        .card h3 { font-family: 'Orbitron'; font-size: 18px; color: var(--acc); margin-bottom: 15px; }
+        /* Symmetrical Feature Grid (4 Cards) */
+        section { padding: 100px 0; border-bottom: 1px solid var(--border); }
+        .section-title { font-family: 'Orbitron'; text-align: center; margin-bottom: 60px; font-size: 32px; letter-spacing: 2px; }
+        .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .card { background: var(--glass); border: 1px solid var(--border); padding: 50px; border-radius: 24px; transition: 0.4s; }
+        .card:hover { border-color: var(--acc); background: rgba(255,255,255,0.04); }
+        .card h3 { font-family: 'Orbitron'; color: var(--acc); margin-bottom: 15px; font-size: 18px; }
+        .card p { font-size: 14px; color: var(--dim); }
 
         /* Synergy Slider */
-        .synergy-container { position: relative; background: rgba(112, 0, 255, 0.03); border: 1px solid var(--purp); padding: 80px 60px; border-radius: 40px; text-align: center; }
-        .synergy-num { font-family: 'Orbitron'; font-size: 120px; opacity: 0.03; position: absolute; top: 10px; left: 30px; }
-        .nav-btn { background: none; border: 1px solid var(--acc); color: var(--acc); padding: 12px 30px; cursor: pointer; font-family: 'Orbitron'; margin: 0 10px; transition: 0.3s; }
-        .nav-btn:hover { background: var(--acc); color: #000; }
+        .synergy-box { position: relative; background: linear-gradient(135deg, rgba(112,0,255,0.05), rgba(0,242,255,0.05)); border: 1px solid var(--purp); padding: 80px 60px; border-radius: 40px; text-align: center; margin: 40px 0; }
+        .synergy-num { font-family: 'Orbitron'; font-size: 100px; opacity: 0.03; position: absolute; top: 10px; left: 30px; }
+        .nav-btn { background: none; border: 1px solid var(--acc); color: var(--acc); padding: 12px 30px; cursor: pointer; font-family: 'Orbitron'; margin: 0 10px; }
 
-        /* Ecosystem & Affiliate */
-        .eco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-        .eco-card { padding: 40px; border: 1px solid var(--border); border-radius: 20px; background: rgba(255,255,255,0.01); text-align: center; transition: 0.3s; }
-        .eco-card:hover { border-color: var(--acc); background: rgba(0,242,255,0.02); }
+        /* Symmetrical Ecosystem (2 Cards) */
+        .eco-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .eco-card { padding: 50px; border: 1px solid var(--border); border-radius: 24px; background: rgba(255,255,255,0.01); text-align: center; transition: 0.4s; }
+        .eco-card h3 { font-family: 'Orbitron'; color: var(--acc); margin-bottom: 15px; }
 
-        /* Legal */
-        .legal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; font-size: 14px; color: var(--dim); }
+        /* Futuristic BMAC */
+        .bmac-neon { 
+            display: inline-block; padding: 15px 35px; border: 2px solid var(--acc); color: var(--acc); 
+            font-family: 'Orbitron'; font-weight: 700; border-radius: 50px; text-decoration: none;
+            margin-top: 40px; transition: 0.4s; animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 0 10px rgba(0, 242, 255, 0.1); } 50% { box-shadow: 0 0 25px rgba(0, 242, 255, 0.4); } }
 
-        footer { padding: 100px 5% 60px; text-align: center; border-top: 1px solid var(--border); }
-        .proton-mail { font-family: 'Orbitron'; color: var(--acc); font-size: 14px; margin-bottom: 20px; }
+        footer { padding: 100px 5% 50px; border-top: 1px solid var(--border); text-align: center; }
+        .footer-links a { color: var(--dim); text-decoration: none; margin: 0 15px; font-size: 12px; }
+
+        @media (max-width: 768px) { .feature-grid, .eco-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -77,53 +70,60 @@
     <header>
         <a href="/" class="logo">CHATPIN</a>
         <nav>
-            <a href="#features">Features</a>
-            <a href="#synergy">Synergy Guide</a>
-            <a href="#ecosystem">Projects</a>
-            <a href="https://halftotake.gumroad.com/l/jgfqiw">Pricing</a>
+            <a href="/pricing.html">Pricing</a>
+            <a href="https://buymeacoffee.com/djawjdaks8g" target="_blank">Support</a>
+            <a href="https://linktr.ee/dedle" target="_blank">Ecosystem</a>
         </nav>
     </header>
 
     <div class="container">
-        <!-- Hero Section -->
+        <!-- 💡 Top Ad Slot -->
+        <div class="ad-slot">ADVERTISEMENT - SUPPORTING FREE INTELLIGENCE</div>
+
         <section class="hero">
-            <h1>Pin the Infinite<br>Intelligence.</h1>
-            <p>The universal flight recorder for AI conversations (ChatGPT, Notion, Gemini, etc.). Track thoughts, timestamp insights, and warp back to context instantly.</p>
-            <a href="https://halftotake.gumroad.com/l/jgfqiw" class="btn-glow">GET PRO ACCESS</a><br>
-            <a href="https://buymeacoffee.com/djawjdaks8g" target="_blank" class="bmac-neon">☕ SUPPORT WITH COFFEE</a>
+            <h1>Pin the Infinite Intelligence.</h1>
+            <p>From ChatGPT to Notion AI. The universal flight recorder to track, timestamp, and retrieve your AI conversation history.</p>
+            <div class="cta-group">
+                <!-- 🚀 Chrome Web Store Link -->
+                <a href="https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID" class="btn-acc">ADD TO CHROME</a>
+                <a href="/pricing.html" class="btn-purp">GET PRO ACCESS</a>
+            </div>
         </section>
 
-        <!-- Features (Rich Text for AdSense) -->
         <section id="features">
-            <span class="section-label">CAPABILITIES</span>
             <h2 class="section-title">Beyond Simple Bookmarks</h2>
             <div class="feature-grid">
                 <div class="card">
-                    <h3>Unified Tracking</h3>
-                    <p>What did you ask, when, and where? ChatPin logs every Q&A pair in real-time across any 5 selected platforms **(ChatGPT, Notion, Gemini, etc.)**. No more digging through infinite history tabs.</p>
+                    <h3>01. Event Timeline</h3>
+                    <p>Logs every interaction unit (Q&A) with millisecond precision across 5 free slots **(ChatGPT, Notion, Gemini, etc.)**.</p>
                 </div>
                 <div class="card">
-                    <h3>Context Warp Jump</h3>
-                    <p>Jump directly back to the exact scroll position of any past interaction. Whether it's a 100-page document or a year-old thread **(Notion, Claude, Perplexity, etc.)**, you are one click away from the context.</p>
+                    <h3>02. Context Warp Jump</h3>
+                    <p>Teleport back to the exact scroll position in massive AI documents or chat threads with one click **(Claude, Perplexity, etc.)**.</p>
                 </div>
                 <div class="card">
-                    <h3>Zero-Server Privacy</h3>
-                    <p>Your data stays yours. We use local IndexedDB and your personal Google Drive for total data sovereignty. No central servers ever see your private AI conversations.</p>
+                    <h3>03. Serverless Privacy</h3>
+                    <p>Conversations stay in your local browser and private Google Drive. We never see, store, or sell your intellectual data.</p>
+                </div>
+                <div class="card">
+                    <h3>04. Semantic Indexing</h3>
+                    <p>Multi-dimensional search by date, source, and hashtags. Turn chaotic AI sessions into a structured, searchable knowledge base.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Synergy Guide Slider (20 Items) -->
+        <!-- 💡 Middle Ad Slot -->
+        <div class="ad-slot">ADVERTISEMENT - RECOMMENDED AI TOOLS</div>
+
         <section id="synergy">
-            <span class="section-label">MASTER GUIDE</span>
-            <h2 class="section-title">20 Ways to Master ChatPin</h2>
-            <div class="synergy-container">
+            <h2 class="section-title">Master Synergy Guide</h2>
+            <div class="synergy-box">
                 <div class="synergy-num" id="syn-num">01</div>
-                <div id="syn-content" style="min-height: 250px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-                    <h3 id="syn-title" style="font-size: 28px; margin-bottom: 20px;">Cross-Model Context Synthesis</h3>
-                    <p id="syn-desc" style="color: var(--dim); font-size: 18px; line-height: 1.8; max-width: 850px;">Seamlessly weave together logic from GPT-4, creative drafts from Claude 3.5, and real-time data from Perplexity into a single unified timeline. Build a hybrid intelligence base.</p>
+                <div id="syn-content">
+                    <h3 id="syn-title" style="margin-bottom:20px; font-size:28px;">Cross-Model Synthesis</h3>
+                    <p id="syn-desc" style="color:var(--dim); font-size:18px;">Combine high-level logic from GPT-4 and nuanced creative drafts from Claude into one unified timeline. Build a superior knowledge base.</p>
                 </div>
-                <div style="margin-top: 50px; display:flex; justify-content:center; align-items:center; gap:30px;">
+                <div style="margin-top:50px;">
                     <button class="nav-btn" onclick="move(-1)">PREV</button>
                     <span id="page-num" style="font-family:'Orbitron'; color:var(--acc);">1 / 20</span>
                     <button class="nav-btn" onclick="move(1)">NEXT</button>
@@ -131,44 +131,35 @@
             </div>
         </section>
 
-        <!-- Ecosystem & Affiliate -->
-        <section id="ecosystem" class="ecosystem">
-            <h2 class="section-title">The Dedle Ecosystem</h2>
+        <section id="ecosystem">
+            <h2 class="section-title">Professional Ecosystem</h2>
             <div class="eco-grid">
                 <div class="eco-card">
-                    <h3 style="color:var(--acc); font-family:'Orbitron'; margin-bottom:15px;">🌐 WriteSonic</h3>
-                    <p style="font-size:14px; margin-bottom:20px; color:var(--dim);">The world's best AI for SEO content. Generate drafts and track them instantly with ChatPin. (Partner Perks)</p>
-                    <a href="#" style="color:#fff; text-decoration:underline;">Claim Discount ↗</a>
+                    <h3>🖱️ Pro Gear (Amazon)</h3>
+                    <p style="font-size:14px; color:var(--dim); margin-bottom:25px;">Logitech MX Master 3S. Map ChatPin shortcuts to side buttons for the ultimate AI workflow. (Affiliate)</p>
+                    <a href="https://www.amazon.com/s?k=logitech+mx+master+3s&tag=dedle" target="_blank" style="color:#fff; text-decoration:underline; font-size:14px;">View Gear ↗</a>
                 </div>
                 <div class="eco-card">
-                    <h3 style="color:var(--acc); font-family:'Orbitron'; margin-bottom:15px;">🖱️ Pro Gear</h3>
-                    <p style="font-size:14px; margin-bottom:20px; color:var(--dim);">Logitech MX Master 3S. Map ChatPin shortcuts to side buttons for the ultimate AI workflow. (Affiliate)</p>
-                    <a href="https://www.amazon.com/s?k=logitech+mx+master+3s&tag=dedle" target="_blank" style="color:#fff; text-decoration:underline;">View on Amazon ↗</a>
+                    <h3>🚀 Dedle Projects</h3>
+                    <p style="font-size:14px; color:var(--dim); margin-bottom:25px;">Explore the full portfolio of micro-SaaS and productivity experiments designed by Dedle.</p>
+                    <a href="https://linktr.ee/dedle" target="_blank" style="color:#fff; text-decoration:underline; font-size:14px;">Visit Linktree ↗</a>
                 </div>
-                <div class="eco-card">
-                    <h3 style="color:var(--acc); font-family:'Orbitron'; margin-bottom:15px;">🚀 Our Projects</h3>
-                    <p style="font-size:14px; margin-bottom:20px; color:var(--dim);">Discover the full portfolio of Dedle productivity tools and micro-SaaS experiments via our Linktree.</p>
-                    <a href="https://linktr.ee/dedle" target="_blank" style="color:#fff; text-decoration:underline;">Visit Linktree ↗</a>
-                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="https://buymeacoffee.com/djawjdaks8g" target="_blank" class="bmac-neon">☕ SUPPORT WITH COFFEE</a>
             </div>
         </section>
 
-        <!-- Legal Content -->
-        <section id="legal" class="legal-grid">
-            <div>
-                <h2 style="font-family:'Orbitron'; font-size:20px; margin-bottom:20px;">Privacy Policy</h2>
-                <p>ChatPin is a privacy-first extension. We do not store your data on our servers. All logs are stored locally in your browser. Pro sync uses your personal Google Drive account.</p>
-            </div>
-            <div>
-                <h2 style="font-family:'Orbitron'; font-size:20px; margin-bottom:20px;">Terms of Service</h2>
-                <p>ChatPin is a management tool. We are not liable for platform-side changes on services like ChatGPT or Notion. Use must comply with AI provider terms.</p>
-            </div>
-        </section>
+        <!-- 💡 Bottom Ad Slot -->
+        <div class="ad-slot">ADVERTISEMENT - POWER UP YOUR WORKFLOW</div>
     </div>
 
     <footer>
-        <div class="proton-mail">CONTACT: offthemain@proton.me</div>
-        <p style="opacity:0.3; font-size:11px;">© 2024 CHATPIN. DESIGNED BY DEDLE. ACCESS THE FUTURE.</p>
+        <div style="color:var(--acc); font-family:'Orbitron'; margin-bottom:20px;">CONTACT: offthemain@proton.me</div>
+        <div class="footer-links">
+            <a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a> | <a href="/pricing.html">Pricing</a>
+        </div>
+        <p style="margin-top:40px; opacity:0.2; font-size:11px;">© 2024 CHATPIN. ARCHIVING THE ERA OF INTELLIGENCE.</p>
     </footer>
 
     <script>
@@ -177,7 +168,7 @@
             { title: "Notion AI Continuity Protocol", desc: "Track every AI drafting block within Notion documents. Warp back to the exact location of any AI-generated content in your long-form Notion pages." },
             { title: "Prompt Engineering Laboratory", desc: "Every prompt is an experiment. Archive every iteration with millisecond timestamps to build a professional library of your successful prompt lineage." },
             { title: "Long-Context Warp Navigation", desc: "Jump back to specific points in million-token conversations instantly. No more manual scrolling in ChatGPT or Perplexity threads." },
-            { title: "SaaS Synergy: WriteSonic", desc: "Generate SEO-optimized content on WriteSonic and refine it in ChatGPT while keeping all your research logs in ChatPin's universal timeline." },
+            { title: "SaaS Synergy: Productive Logic", desc: "Generate SEO-optimized content on specialized AI platforms and refine it in general models while keeping all research logs in ChatPin." },
             { title: "Debugging Lineage Archive", desc: "For developers, a fix is often the 10th attempt. Archive failed attempts and the final solution to build a searchable troubleshooting database." },
             { title: "Real-time Insight Snapshots", desc: "AI data from Gemini or Perplexity decays fast. Pin real-time market insights as fixed-point references in your personal knowledge archive." },
             { title: "Language Learning Ledger", desc: "Turn AI tutors into a searchable textbook. Archive grammar explanations and cultural nuances, building a ledger that grows with your fluency." },
@@ -186,7 +177,7 @@
             { title: "Corporate AI Portal Tracking", desc: "Use Pro slots to register proprietary in-house AI portals. Manage sensitive professional archives alongside personal AI tools securely." },
             { title: "Academic Bibliography Context", desc: "AI is a research assistant, but where did that summary come from? Tag pins with project hashtags to build a dynamic, contextual bibliography." },
             { title: "Legal & Compliance Audit", desc: "Maintain a precise record of AI-assisted document reviews. Show exactly what was asked and responded at any specific time for compliance." },
-            { title: "Creative Continuity Engine", desc: "Pin character sheets and world-building rules. Ensure your AI sessions stay consistent with your creative vision, no matter the session length." },
+            { title: "Creative Writing Continuity", desc: "Pin character sheets and world-building rules. Ensure AI sessions stay consistent with your creative vision across sessions." },
             { title: "Financial Forecast Archiving", desc: "Archive AI-driven financial assessments. Track how AI's opinion of the market shifts quarterly as new data becomes available." },
             { title: "Prompt-to-Visual Design Registry", desc: "Log text-to-image prompts alongside descriptive AI feedback. Replicate artistic styles and lighting effects across future DALL-E sessions." },
             { title: "Philosophy & Coaching Log", desc: "Use AI for self-reflection. Archive philosophical discussions or coaching sessions to track your mental shifts and personal growth over years." },
