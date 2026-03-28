@@ -7,22 +7,20 @@
     <script src="https://gumroad.com/js/gumroad.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { background:#020202; color:#fff; font-family:'Inter', sans-serif; text-align:center; padding: 50px 5%; }
-        .logo { font-family:'Orbitron'; color:#00f2ff; text-decoration:none; font-size:24px; letter-spacing:2px; display:block; margin-bottom:40px; }
-        .ad-slot { width: 100%; display: flex; justify-content: center; margin-bottom: 30px; min-height: 90px; }
-        .pricing-card { max-width:450px; margin: 0 auto 50px; padding: 60px 30px; border: 1px solid #7000ff; border-radius:30px; background: rgba(112,0,255,0.05); box-shadow: 0 0 40px rgba(112,0,255,0.2); }
+        body { background:#020202; color:#fff; font-family:'Inter', sans-serif; text-align:center; padding: 50px 5%; overflow-x: hidden; }
+        .logo { font-family:'Orbitron'; color:#00f2ff; text-decoration:none; font-size:24px; letter-spacing:2px; display:block; margin-bottom:40px; position: relative; z-index: 100; }
+        .pricing-card { max-width:450px; margin: 0 auto 50px; padding: 60px 30px; border: 1px solid #7000ff; border-radius:30px; background: rgba(112,0,255,0.05); position: relative; z-index: 100; box-shadow: 0 0 40px rgba(112,0,255,0.2); }
         .price { font-size:56px; font-weight:800; margin: 30px 0; color:#00f2ff; }
         ul { text-align:left; color:#aaa; list-style:none; padding:0; margin-bottom: 40px; }
         li { margin-bottom:12px; font-size:14px; }
-        li::before { content: '✓ '; color: #00f2ff; }
-        .gumroad-button { background:#00f2ff !important; color:#000 !important; font-family:'Orbitron' !important; padding:18px 40px !important; border-radius: 8px !important; text-decoration: none; display: inline-block; font-weight: 700; width: 100%; }
+        li::before { content: '✓ '; color: #00f2ff; font-weight: bold; }
+        .gumroad-button { background:#00f2ff !important; color:#000 !important; font-family:'Orbitron' !important; padding:20px 40px !important; border-radius: 8px !important; text-decoration: none; display: inline-block; font-weight: 700; width: 100%; position: relative; z-index: 101; cursor: pointer; }
     </style>
 </head>
 <body>
     <a href="index.html" class="logo">CHATPIN</a>
 
-    <!-- 💡 Adsterra Native Banner (Pricing Top) -->
-    <div class="ad-slot">
+    <div style="text-align:center; margin-bottom: 30px;">
         <script async="async" data-cfasync="false" src="https://pl28997143.profitablecpmratenetwork.com/e43ae85bc48505147fee8a2d7f9b4efa/invoke.js"></script>
         <div id="container-e43ae85bc48505147fee8a2d7f9b4efa"></div>
     </div>
@@ -39,9 +37,8 @@
         <a class="gumroad-button" href="https://halftotake.gumroad.com/l/jgfqiw?wanted=true">ACTIVATE PRO</a>
     </div>
 
-    <a href="index.html" style="color:#444; text-decoration:none; font-size:12px;">← Back to Home</a>
+    <a href="index.html" style="color:#444; text-decoration:none; font-size:12px; position: relative; z-index: 100;">← Back to Home</a>
 
-    <!-- 💡 Adsterra Social Bar (Allowed on Pricing) -->
     <script src="https://pl28997144.profitablecpmratenetwork.com/40/6e/02/406e02ceeb81c4e6790276d10d7e17bf.js"></script>
 </body>
 </html>
