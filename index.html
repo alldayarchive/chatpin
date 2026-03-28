@@ -9,48 +9,45 @@
         :root { --bg: #020202; --acc: #00f2ff; --purp: #7000ff; --text: #fff; --dim: #9ca3af; --border: rgba(255, 255, 255, 0.08); }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
-        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(112, 0, 255, 0.05), transparent); z-index: -1; }
+        
+        /* 💡 클릭 방해 해결: z-index를 -1로 내려서 뒤로 보냄 */
+        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(112, 0, 255, 0.05), transparent); z-index: -1; pointer-events: none; }
+        
         header { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; background: rgba(2,2,2,0.8); }
         .logo { font-family: 'Orbitron'; font-size: 20px; font-weight: 700; color: var(--acc); text-decoration: none; letter-spacing: 2px; }
         nav { display: flex; gap: 15px; }
-        nav a { font-size: 11px; font-weight: 600; color: var(--dim); text-transform: uppercase; text-decoration: none; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Ad Containers */
-        .ad-banner { width: 100%; display: flex; justify-content: center; margin: 30px 0; min-height: 90px; overflow: hidden; }
+        nav a { font-size: 11px; font-weight: 600; color: var(--dim); text-transform: uppercase; text-decoration: none; cursor: pointer; }
+        nav a:hover { color: var(--acc); }
 
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 10; }
+        
         .hero { padding: 80px 0 40px; text-align: center; }
         .hero h1 { font-family: 'Orbitron'; font-size: clamp(28px, 8vw, 60px); font-weight: 800; line-height: 1.2; margin-bottom: 25px; background: linear-gradient(to right, #fff, var(--acc)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: clamp(14px, 4vw, 18px); color: var(--dim); max-width: 700px; margin: 0 auto 40px; }
         
-        .bmac-neon { display: inline-block; padding: 15px 35px; border: 2px solid var(--acc); color: var(--acc); font-family: 'Orbitron'; font-weight: 700; border-radius: 50px; text-decoration: none; font-size: 13px; box-shadow: 0 0 15px rgba(0, 242, 255, 0.1); animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { box-shadow: 0 0 15px rgba(0, 242, 255, 0.1); } 50% { box-shadow: 0 0 30px rgba(0, 242, 255, 0.4); } }
+        /* 🚀 메인 프로 전환 버튼 */
+        .btn-pro-main { display: inline-block; padding: 18px 40px; background: linear-gradient(45deg, var(--acc), var(--purp)); color: #fff; font-family: 'Orbitron'; font-weight: 700; border-radius: 8px; text-decoration: none; margin: 10px; box-shadow: 0 0 20px rgba(0, 242, 255, 0.3); transition: 0.3s; }
+        .btn-pro-main:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--acc); }
+
+        .bmac-neon { display: inline-block; padding: 16px 35px; border: 2px solid var(--acc); color: var(--acc); font-family: 'Orbitron'; font-weight: 700; border-radius: 50px; text-decoration: none; font-size: 13px; margin: 10px; transition: 0.4s; }
+        .bmac-neon:hover { background: var(--acc); color: #000; }
 
         section { padding: 80px 0; border-bottom: 1px solid var(--border); }
-        .section-title { font-family: 'Orbitron'; text-align: center; margin-bottom: 50px; font-size: 24px; color: var(--acc); letter-spacing: 2px; }
+        .section-title { font-family: 'Orbitron'; text-align: center; margin-bottom: 50px; font-size: 24px; color: var(--acc); }
         
-        /* 4 Cards Symmetry */
         .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-        .card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 30px; border-radius: 20px; transition: 0.3s; }
-        .card:hover { border-color: var(--acc); background: rgba(255,255,255,0.04); }
+        .card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 30px; border-radius: 20px; }
         .card h3 { font-family: 'Orbitron'; color: var(--acc); margin-bottom: 15px; font-size: 16px; }
 
         .synergy-box { position: relative; background: rgba(112,0,255,0.05); border: 1px solid var(--purp); padding: 50px 20px; border-radius: 30px; text-align: center; margin: 20px 0; }
-        .synergy-num { font-family: 'Orbitron'; font-size: 60px; opacity: 0.05; position: absolute; top: 10px; left: 20px; }
         .nav-btn { background: none; border: 1px solid var(--acc); color: var(--acc); padding: 10px 20px; cursor: pointer; font-family: 'Orbitron'; font-size: 11px; margin: 10px 5px; }
 
-        /* Security Partners - 2 Cards Symmetry */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .partner-card { padding: 40px; border: 1px solid #333; border-radius: 24px; background: rgba(255,255,255,0.01); text-align: center; transition: 0.4s; text-decoration: none; }
-        .partner-card:hover { border-color: var(--acc); background: rgba(0, 242, 255, 0.03); transform: translateY(-5px); }
-        .partner-card h3 { font-family: 'Orbitron'; color: #fff; margin-bottom: 10px; font-size: 18px; }
-        .partner-card p { font-size: 12px; color: var(--dim); margin-bottom: 20px; }
-        .partner-btn { color: var(--acc); font-size: 13px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid var(--acc); }
-
+        .partner-card { display: block; padding: 40px; border: 1px solid #333; border-radius: 24px; background: rgba(255,255,255,0.01); text-align: center; transition: 0.4s; text-decoration: none; }
+        .partner-card:hover { border-color: var(--acc); transform: translateY(-5px); }
+        
         footer { padding: 80px 5% 40px; border-top: 1px solid var(--border); text-align: center; }
         .footer-links a { color: var(--dim); text-decoration: none; margin: 0 10px; font-size: 12px; }
 
-        @media (max-width: 650px) { header { flex-direction: column; gap: 10px; } .grid-2 { grid-template-columns: 1fr; } }
+        @media (max-width: 650px) { header { flex-direction: column; gap: 10px; } }
     </style>
 </head>
 <body>
@@ -65,25 +62,30 @@
     </header>
 
     <div class="container">
-        <!-- 💡 Adsterra Top Native Banner -->
-        <div class="ad-banner">
+        <!-- 💡 Adsterra Top Banner -->
+        <div style="text-align:center; margin: 20px 0;">
             <script async="async" data-cfasync="false" src="https://pl28997143.profitablecpmratenetwork.com/e43ae85bc48505147fee8a2d7f9b4efa/invoke.js"></script>
             <div id="container-e43ae85bc48505147fee8a2d7f9b4efa"></div>
         </div>
 
         <section class="hero">
             <h1>Capture Your AI Intelligence.</h1>
-            <p>The universal flight recorder for ChatGPT, Notion AI, and more. Track thoughts, timestamp insights, and warp back to context instantly.</p>
-            <a href="https://buymeacoffee.com/djawjdaks8g" target="_blank" class="bmac-neon">☕ SUPPORT WITH COFFEE</a>
+            <p style="color:var(--dim); margin-bottom:40px;">The universal flight recorder for ChatGPT, Notion AI, and more. Track thoughts, timestamp insights, and warp back to context instantly.</p>
+            
+            <!-- 🎯 프로 전환 및 후원 버튼 -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                <a href="pricing.html" class="btn-pro-main">ACTIVATE PRO ACCESS</a>
+                <a href="https://buymeacoffee.com/djawjdaks8g" target="_blank" class="bmac-neon">☕ SUPPORT DEV</a>
+            </div>
         </section>
 
         <section id="features">
             <h2 class="section-title">Core Capabilities</h2>
             <div class="grid-4">
-                <div class="card"><h3>01. Event Timeline</h3><p style="font-size:13px; color:var(--dim);">Logs every Q&A pair with precise timestamps across multiple AI platforms.</p></div>
-                <div class="card"><h3>02. Context Warp</h3><p style="font-size:13px; color:var(--dim);">Jump directly back to the exact scroll position in any document or chat instantly.</p></div>
-                <div class="card"><h3>03. Serverless Privacy</h3><p style="font-size:13px; color:var(--dim);">Total data sovereignty. Your conversations stay in your local browser and Drive.</p></div>
-                <div class="card"><h3>04. Semantic Indexing</h3><p style="font-size:13px; color:var(--dim);">Organize chaotic AI sessions into a structured, searchable knowledge base.</p></div>
+                <div class="card"><h3>01. Event Timeline</h3><p style="font-size:13px; color:var(--dim);">Logs every Q&A pair with precise timestamps across platforms.</p></div>
+                <div class="card"><h3>02. Context Warp</h3><p style="font-size:13px; color:var(--dim);">Jump directly back to the exact scroll position in any document.</p></div>
+                <div class="card"><h3>03. Serverless Privacy</h3><p style="font-size:13px; color:var(--dim);">Total data sovereignty. Your conversations stay in your browser.</p></div>
+                <div class="card"><h3>04. Semantic Indexing</h3><p style="font-size:13px; color:var(--dim);">Organize chaotic data into a structured knowledge base.</p></div>
             </div>
         </section>
 
@@ -92,7 +94,7 @@
             <div class="synergy-box">
                 <div class="synergy-num" id="syn-num">01</div>
                 <h3 id="syn-title" style="margin-bottom:15px; font-size:22px;">Cross-Model Context</h3>
-                <p id="syn-desc" style="color:var(--dim); font-size:14px; min-height:80px;">Combine high-level logic from GPT-4 and creative drafts from Claude into one unified workspace.</p>
+                <p id="syn-desc" style="color:var(--dim); font-size:14px; min-height:80px;">Combine high-level logic from GPT-4 and creative drafts from Claude into one unified workspace archive.</p>
                 <div>
                     <button class="nav-btn" onclick="move(-1)">PREV</button>
                     <span id="page-num" style="font-family:'Orbitron'; color:var(--acc); font-size:12px;">1 / 20</span>
@@ -101,19 +103,18 @@
             </div>
         </section>
 
-        <!-- 🛡️ Security Partner Section (Nord Affiliate) -->
         <section id="partners">
             <h2 class="section-title">Security Partners</h2>
-            <div class="grid-2">
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                 <a href="https://go.nordvpn.net/aff_c?offer_id=15&aff_id=141918&url_id=23180" target="_blank" class="partner-card">
-                    <h3>NordVPN</h3>
-                    <p>Protect your AI interactions with industry-leading encryption and private access.</p>
-                    <span class="partner-btn">Get Secure Access ↗</span>
+                    <h3 style="font-family:'Orbitron'; color:#fff;">NordVPN</h3>
+                    <p style="color:var(--dim); font-size:13px; margin:10px 0;">Protect your AI interactions with industry-leading encryption.</p>
+                    <span style="color:var(--acc); font-size:12px; font-weight:700;">GET SECURE ACCESS ↗</span>
                 </a>
                 <a href="https://go.nordpass.io/aff_c?offer_id=488&aff_id=141918&url_id=32566" target="_blank" class="partner-card">
-                    <h3>NordPass</h3>
-                    <p>Securely manage your AI platform credentials with a futuristic password vault.</p>
-                    <span class="partner-btn">Secure My Keys ↗</span>
+                    <h3 style="font-family:'Orbitron'; color:#fff;">NordPass</h3>
+                    <p style="color:var(--dim); font-size:13px; margin:10px 0;">Securely manage your AI platform credentials effortlessly.</p>
+                    <span style="color:var(--acc); font-size:12px; font-weight:700;">SECURE MY KEYS ↗</span>
                 </a>
             </div>
         </section>
@@ -134,9 +135,11 @@
     <script>
         const synergyData = [
             { title: "Cross-Model Context", desc: "Combine high-level logic from GPT-4 and creative drafts from Claude into a single workspace archive." },
-            { title: "Notion Continuity", desc: "Track every AI drafting block within Notion documents. Warp back to exact blocks instantly." },
-            { title: "Prompt Engineering", desc: "Build a professional library of your successful prompt lineage with millisecond timestamps." }
-            // ... 20 items can be filled here
+            { title: "Notion Continuity", desc: "Track drafting block lineages in Notion. Warp back to exact locations instantly." },
+            { title: "Prompt Engineering", desc: "Build a professional library of your successful prompt lineage with timestamps." },
+            { title: "Long-Context Warp", desc: "Instantly jump back to specific logic in massive conversations without scrolling." },
+            { title: "Semantic Indexing", desc: "Use project-based hashtags to turn disparate chats into a structured knowledge base." }
+            // ... (데이터를 20개까지 늘려주세요)
         ];
         let cur = 0;
         function move(dir) {
