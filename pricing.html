@@ -8,20 +8,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body { background:#020202; color:#fff; font-family:'Inter', sans-serif; margin:0; padding:0; display:flex; flex-direction:column; align-items:center; min-height:100vh; overflow-x: hidden; }
-        header { width: 100%; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 10000; background: rgba(2,2,2,0.8); backdrop-filter: blur(20px); }
+        header { width: 100%; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 1000000; background: rgba(2,2,2,0.9); backdrop-filter: blur(20px); }
         .logo { font-family:'Orbitron'; color:#00f2ff; text-decoration:none; font-size:20px; letter-spacing:2px; }
         nav { display: flex; gap: 15px; }
-        nav a { font-size: 11px; font-weight: 600; color: #9ca3af; text-transform: uppercase; text-decoration: none; }
+        nav a { font-size: 11px; font-weight: 600; color: #9ca3af; text-transform: uppercase; text-decoration: none; padding: 5px; cursor: pointer !important; }
         
-        .container { width: 100%; max-width: 500px; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 10; }
-        .pricing-card { width: 100%; padding: 60px 40px; border: 1px solid #7000ff; border-radius:30px; background: rgba(112,0,255,0.05); box-shadow: 0 0 50px rgba(112,0,255,0.2); text-align: center; margin: 30px 0; position: relative; z-index: 100; }
+        .container { width: 100%; max-width: 500px; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1000; }
+        .pricing-card { width: 100%; padding: 60px 40px; border: 1px solid #7000ff; border-radius:30px; background: rgba(112,0,255,0.05); box-shadow: 0 0 50px rgba(112,0,255,0.2); text-align: center; margin: 30px 0; position: relative; z-index: 1000; }
         .price { font-size:64px; font-weight:800; margin: 30px 0; color:#00f2ff; }
         .price span { font-size:20px; color:#666; }
-        ul { text-align:left; color:#aaa; list-style:none; padding:0; margin-bottom: 40px; width: 100%; }
+        ul { text-align:left; color:#aaa; list-style:none; padding:0; margin-bottom: 40px; }
         li { margin-bottom:15px; font-size:15px; display: flex; align-items: center; gap: 10px; }
         li::before { content: '✓'; color: #00f2ff; font-weight: bold; }
-        .gumroad-button { background:#00f2ff !important; color:#000 !important; font-family:'Orbitron' !important; padding:20px 0 !important; border-radius: 8px !important; text-decoration: none; display: block; width: 100%; font-weight: 700; text-align: center; position: relative; z-index: 110; cursor: pointer; transition: 0.3s; }
-        .back { color:#444; text-decoration:none; font-size:12px; margin-top: 20px; position: relative; z-index: 120; }
+        
+        .gumroad-button { background:#00f2ff !important; color:#000 !important; font-family:'Orbitron' !important; padding:20px 0 !important; border-radius: 8px !important; text-decoration: none; display: block; width: 100%; font-weight: 700; text-align: center; cursor: pointer !important; position: relative; z-index: 1001; }
+        .back { color:#444; text-decoration:none; font-size:12px; margin-top: 20px; cursor: pointer !important; position: relative; z-index: 1002; }
     </style>
 </head>
 <body>
@@ -41,7 +42,7 @@
         </div>
 
         <div class="pricing-card">
-            <h2 style="font-family:'Orbitron'; margin:0;">PRO ACCESS</h2>
+            <h2 style="font-family:'Orbitron'; margin:0; color:#fff;">PRO ACCESS</h2>
             <div class="price">$10<span>/mo</span></div>
             <ul>
                 <li>✅ Unlimited AI Source Slots</li>
@@ -55,6 +56,7 @@
         <a href="index.html" class="back">← Back to Home</a>
     </div>
 
+    <!-- 💡 Social Bar (Allowed) -->
     <script src="https://pl28997144.profitablecpmratenetwork.com/40/6e/02/406e02ceeb81c4e6790276d10d7e17bf.js"></script>
 </body>
 </html>
